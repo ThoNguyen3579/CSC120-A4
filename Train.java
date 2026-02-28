@@ -6,6 +6,7 @@ public class Train implements TrainRequirements{
     // Attributes
     private Engine engine; // an engine for train to run
     private ArrayList<Car> cars; // the list of cars currently attached
+    private int passengerCapacity; // total capacity of the whole train
 
     /**
      * Constructor
@@ -15,9 +16,8 @@ public class Train implements TrainRequirements{
         // initialize the constructor
         this.engine = new Engine(fuelType, currentFuelLevel, fuelCapacity); // create a new engine
         this.cars = new ArrayList<Car>(nCars); // create a list of cars with nCars attached
-        for (int i = 0; i < nCars; i++) {
-            this.cars.get(i).setCapacity(passengerCapacity); // set the capacity of the cars
-        }
+        this.passengerCapacity = passengerCapacity;
+
     }
 
     /**
@@ -34,7 +34,7 @@ public class Train implements TrainRequirements{
     * @return car_i(type Car)
     */
     public Car getCar(int i){
-        Car car_i = cars.get(i);
+        Car car_i = this.cars.get(i);
         return car_i;
     } 
 
@@ -43,11 +43,7 @@ public class Train implements TrainRequirements{
     * @return maximum total capacity (type int)
     */
     public int getMaxCapacity(){
-        int sum = 0; // initial value for the total maximum capacity
-        for (int i = 0; i < this.cars.size(); i++) {
-            sum += this.cars.get(i).getCapacity(); // add up the total maximum capacity
-        }
-        return sum; // return the total maximum capacity
+        return this.passengerCapacity;
     }
 
     /**
@@ -66,9 +62,32 @@ public class Train implements TrainRequirements{
      * print a roster of all passengers
     */
     public void printManifest(){
+        System.out.println("There are " + cars.size() + " cars attached to this train");
         for (int i = 0; i < cars.size(); i++) {
+            System.out.println("The passengers in car " + (i+1) + " are:");
             cars.get(i).printManifest();
         }
 
     }
+    public static void main(String[] args) {
+        Car myCar = new Car(30);
+        Car yourCar = new Car(25);
+
+        Passenger robbert = new Passenger("Robbert");
+        Passenger ella = new Passenger("Ella");
+        Passenger michelle = new Passenger("Michelle");
+        Passenger jude = new Passenger("Jude");
+        
+        myCar.addPassenger(ella);
+        myCar.addPassenger(robbert);
+        yourCar.addPassenger(michelle);
+        yourCar.addPassenger(jude);
+
+        Train myTrain = new Train(FuelType.ELECTRIC , 57.0, 100.0 , 2 , 100 );
+        myTrain.cars.add(myCar);
+        myTrain.cars.add(yourCar);
+
+        myTrain.printManifest();
+    }
+
 }

@@ -80,9 +80,10 @@ public class Car implements CarRequirements {
         if(this.Passenger_ArrayList.isEmpty()){
             System.out.println("This car is EMPTY."); // print message if car is empty
         } else {
-        System.out.println("The passengers in this car are: \r\n" + Passenger_StringBuilder.toString()); // if car is not empty, print out the string builder that is converted to string
+        System.out.println(Passenger_StringBuilder.toString()); // if car is not empty, print out the string builder that is converted to string
     }
     }
+
 
     public static void main(String[] args) {
         Car my_Car = new Car(100);

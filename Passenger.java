@@ -38,7 +38,7 @@ public class Passenger implements PassengerRequirements{
     * @param c (type car)
     */
     public void getOffCar(Car c){
-        Boolean off_car = c.addPassenger(this);
+        Boolean off_car = c.removePassenger(this);
         if (off_car){
             // print messages according to different situtations
             System.out.println("Passenger " + this + " is out of the car!");
