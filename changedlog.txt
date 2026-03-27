@@ -1,0 +1,8 @@
+Error 1: Minor logic error in go(...) allows fuel level to fall below or never reach zero
+-> My go method allowed the fuel level to go below 0 
+-> Instead of `return this.CurrentFuel > 0`, I change it to `return this.CurrentFuel >= n`. This way, fuel level cannot go below 0!
+
+Error 2: Minor bug: Passenger can board multiple times (you may have an error message but still return true)
+-> In the addPassenger method, I add another if statement to check if Passenger is already on the car.
+
+

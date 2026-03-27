@@ -49,8 +49,10 @@ public class Car implements CarRequirements {
     */
     public Boolean addPassenger(Passenger p){
         int old_list_size = this.Passenger_ArrayList.size(); // storing the intial number of passengers
-        if (seatsRemaining() > 0){ // if the seat remaining are > 0, add passenger to the list
-            Passenger_ArrayList.add(p);
+        if (seatsRemaining() > 0){ // if the seat remaining are > 0
+            if (!this.Passenger_ArrayList.contains(p)){
+            Passenger_ArrayList.add(p); //add passenger to the list
+            }
         }
         return Passenger_ArrayList.size() == old_list_size+1; // Return True if the size of the list increases by 1 and false otherwise
     }
@@ -90,6 +92,7 @@ public class Car implements CarRequirements {
         Passenger myPassenger = new Passenger("mimi");
         Passenger hia = new Passenger("Hia");
         my_Car.addPassenger(myPassenger);
+        my_Car.addPassenger(hia);
         my_Car.addPassenger(hia);
         my_Car.printManifest();
         my_Car.removePassenger(myPassenger);

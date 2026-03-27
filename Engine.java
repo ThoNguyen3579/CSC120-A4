@@ -48,10 +48,10 @@ public class Engine implements EngineRequirements {
     * @return Boolean: True when current fuel level is > 0 and False otherwise
     */
     public Boolean go() {
-        this.CurrentFuel -= 20; // decrease 20 as train goes on
-        System.out.println("The remaining current level is "+CurrentFuel); //print the remaining current fuel level
-        return CurrentFuel > 0; // reuturn true when current level > 0 
-
+        double n = 20;
+        this.CurrentFuel -= n; // decrease 20 as train goes on
+        System.out.println("The remaining current level is " + CurrentFuel);//print the remaining current fuel level
+        return this.CurrentFuel >= n; // return true when current level > 0 
     }
     
     public static void main(String[] args) {
